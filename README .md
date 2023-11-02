@@ -1,0 +1,5 @@
+Using the hand-object-detector repo and existing action annotation files to assign object labels to hand-object-detections generated. clone https://github.com/ddshan/hand_object_detector. Use HOD-readme to set up the environment for the hand-object-detector repo.  Map existing action labels to the proper format using map_actions.  Generate the hand object detection json file by running save_to_json.py with the corresponding directory of images. This will save your image detections to a json and also create a directory of images with the detections included.
+
+ use CUDA_VISIBLE_DEVICES=0 python save_to_json.py --cuda --checkepoch=8 --checkpoint=132028 --image_dir=rgb-folder  --save_dir=save_directory
+
+ Each frame can have up to two hand and two object detections where 0 represents left and 1 represents right. Then, generate the object labels by running generate_obj_labels inputting the json file and the mapped actions file, this will create a json file including the labels for each bounding box. Visualize bounding boxes with labels by running visualize. All scripts are in scripts.
